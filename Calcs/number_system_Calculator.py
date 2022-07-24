@@ -59,6 +59,34 @@ def rough_convert(num,base):
         num = num//base
     print("0"+fin)
 
+def smooth_convert(num, base):
+    if base > 16 and base < 2:
+        print("Numerical System not covered by this program yet.")
+        return
+    if base < 10 :
+        fin = ""
+        cnt = 0
+        while cnt != num :
+            here = num % base
+            fin = str(here) + fin
+            num = num//base
+        print("0"+fin)
+    elif base == 10 :
+        print(num)
+    elif(base > 10):
+        extras = ['a','b','c','d','e','f','g','h','i','j']
+        fin = ""
+        cnt = 0
+        while cnt != num :
+            here = num % base
+            if here > 9:
+                here -= 9
+                fin = str(extras[here-1]) + fin
+            else:
+                fin = str(here) + fin
+            num = num//base
+        print("0"+fin)
+
 def calc(item):
     if not are_numbers(item):
         print ("Was expecting numbers only")
@@ -68,6 +96,7 @@ def calc(item):
     count_system = int(item[2])
     final = num1 + num2
     rough_convert(final, count_system)
+    smooth_convert(final, count_system)
 
 
 
